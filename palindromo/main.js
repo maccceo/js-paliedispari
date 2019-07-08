@@ -1,0 +1,1 @@
+// funzione che capisce se la parola inserita è palindroma
