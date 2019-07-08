@@ -2,14 +2,33 @@
 // prompt utente "pari o dispari" e numero da 1 a 5
 // genera numero da 1 a 5 per il computer e dichiara chi ha vinto
 
-var choice, playerNumber, comNumber, result;
+var choice, playerNumber, comNumber, result, allClear = false;
 
 
 //acquisisco input utente
 choice = prompt("Pari o dispari?");
 choice = choice.toLowerCase();
+//accetto solo l'input "pari" o "dispari"
+while (allClear == false) {
+	if (choice === "pari" || choice === "dispari") {
+		allClear = true;
+	} else {
+		choice = prompt('Formato non valido, scrivi "pari" o "dispari:"');
+		choice = choice.toLowerCase();
+	}
+}
+allClear = false;
+
 playerNumber = parseInt(prompt("Inserisci un numero da 1 a 5:"));
-console.log(choice + ' ' + playerNumber);
+//accetto solo un numero
+while (allClear == false) {
+	if (!isNaN(playerNumber)) {
+		allClear = true;
+	} else {
+		playerNumber = parseInt(prompt('Inserisci un numero da 1 a 5:'));
+	}
+}
+console.log(choice + ', numero utente: ' + playerNumber);
 
 //genero numero computer
 comNumber = RandomGenerator();
@@ -39,5 +58,6 @@ function Winner(choice, num1, num2) {
 		return "Hai vinto!";
 	} else {
 		return "E' successo qualcosa di imprevisto..."
+		//non dovrebbe..
 	}
 }
